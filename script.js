@@ -15,9 +15,17 @@ function search(str) {
 	}
 	return results;
 }
+//When a key is pressed Loop through the results array and make each one into an li and put it in the suggestions ul and make that appear on the screen in a dropdown menu
+
+//figure out how to make it so that when something is typed into the type=text that it makes it go through the seach function so that it can create a results array that I would be able to loop through and do my first thought currently seachHandler(e) e.target console.logs the whole html line?
+
 
 function searchHandler(e) {
-	// TODO
+	let inputVal = e.target.value;
+	
+	let results = [];
+	results = search(inputVal)
+	console.log(results)
 }
 
 function showSuggestions(results, inputVal) {
