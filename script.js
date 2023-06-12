@@ -38,14 +38,28 @@ function searchHandler(e) {
 }
 
 
-
+//?Idea? loop through the array and make each fruit into a li and put it into the ul to start
+//I dont know what I will use the inputVal for? Right now it seems like I do not need it
+//Make the current inputVal bold
 function showSuggestions(results, inputVal) {
 
+	suggestions.innerHTML = ``
 
+	if(results.length) {
+		for(let i = 0; i < results.length; i++) {
+			let li = document.createElement('li')
+			let match = results[i].match(new RegExp(inputVal, 'i'))
+			let text = results[i].replace(match[0], `<b>${match[0]}</b>`)
+			li.innerHTML = text;
+			suggestions.append(li)
+		}
+	}
 }
-
+//
 function useSuggestion(e) {
-	// TODO
+	input.value = e.target.innerText;
+	
+	suggestions.innerHTML = ``
 }
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
