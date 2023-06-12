@@ -1,21 +1,12 @@
 * {
   box-sizing: border-box;
 }
-
-:focus {
- /* TODO */
-}
-
+/* Make the background close to the same gradient as the example */
 body {
 background: linear-gradient(90deg, rgba(255,236,9,1) 0%, rgba(255,107,0,1) 100%);
 }
 
 input {
-/* 
-width: 400px;
-height: 50px;
-
-display: block; */
 flex: 1;
 height: 50px;
 background: rgba(255,255,255, 0.4);
@@ -33,9 +24,7 @@ font-size: 40px;
 .search-container .suggestions {
 width: 600px;
 }
-.search-container input {
 
-}
 .search-container .suggestions {
 padding: 0;
 margin: 0;
@@ -47,11 +36,6 @@ ul {
   margin: 0px;
   
 }
-ul.has-suggestions {
-display: flex;
-align-items: center;
-padding: 10px 20px;
-}
 ul li {
 list-style: none;
 padding: 15px 10px;
@@ -62,6 +46,17 @@ ul li:hover {
 background: rgb(255, 60, 0);
 }
 
-input {
+/* I do not know what these were meant to be used for, It seems like I was able to recreate the app and the css without them
+ input {
   
+} 
+ul.has-suggestions {
+
 }
+:focus {
+ 
+}
+.search-container input {
+
+}
+*/

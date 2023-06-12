@@ -33,32 +33,35 @@ function searchHandler(e) {
 		//have the inputVal be the argument for the search function made earlier, and set it to the results variable
 		results = search(inputVal)
 	}
-	//?Idea? This will call the next function that I will make so that it will show the suggestions on the screen
+	// This will call the next function that I will make so that it will show the suggestions on the screen
 	showSuggestions(results, inputVal)
 }
 
-
-//?Idea? loop through the array and make each fruit into a li and put it into the ul to start
-//I dont know what I will use the inputVal for? Right now it seems like I do not need it
-//Make the current inputVal bold
 function showSuggestions(results, inputVal) {
-
+	//Everytime the text inside the input changes it will set the html back to zero so that there aren't extra options to choose from
 	suggestions.innerHTML = ``
-
+	//As long as something is typed the results will show on screen, made this so that the whole array would not show up with nothing typed in
 	if(results.length) {
-		for(let i = 0; i < results.length; i++) {
+		//loop through the results array to make it so that I can make each one into an li changed to a for of loop for better readability
+		for(let result of results) {
+			//Create an li each time to put the fruit's text into
 			let li = document.createElement('li')
-			let match = results[i].match(new RegExp(inputVal, 'i'))
-			let text = results[i].replace(match[0], `<b>${match[0]}</b>`)
+			//Match the current fruits that have the inputVal with case being insesitive
+			let match = result.match(new RegExp(inputVal, 'i'))
+			//replace the current fruit's name to have the part that is the inputVal to be bolded
+			let text = result.replace(match[0], `<b>${match[0]}</b>`)
+			//make the li's innerHTML into what we just replaced it with
 			li.innerHTML = text;
+			//append it so that it appears on screen
 			suggestions.append(li)
 		}
 	}
 }
 //
 function useSuggestion(e) {
+	//When one of the autocompleted suggestions is clicked on it will fill the input with that value that is click
 	input.value = e.target.innerText;
-	
+	//When a value is clicked it will reset the list so that it is no longer there
 	suggestions.innerHTML = ``
 }
 input.addEventListener('keyup', searchHandler);
